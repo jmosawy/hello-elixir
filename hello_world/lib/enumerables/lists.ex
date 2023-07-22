@@ -13,8 +13,11 @@ defmodule HelloWorld.Enumerables.Lists do
 
   def sum_simple([h | t]), do: h + sum_simple(t)
 
-
   def sum_tail_rec(nums, acc \\ 0)
   def sum_tail_rec([], acc), do: acc
   def sum_tail_rec([h | t], acc), do: sum_tail_rec(t, acc + h)
+
+  def map(elements, func, acc \\ [])
+  def map([], _, acc), do: acc
+  def map([h | t], func, acc), do: map(t, func, [acc | func.(h)])
 end
